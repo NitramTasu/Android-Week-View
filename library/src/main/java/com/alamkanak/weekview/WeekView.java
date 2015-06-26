@@ -103,6 +103,7 @@ public class WeekView extends View {
     private Calendar mLastVisibleDay;
     private Calendar mScrollToDay = null;
     private double mScrollToHour = -1;
+    private boolean mAllowHorizontalScroll = true;
 
     // Listeners.
     private EventClickListener mEventClickListener;
@@ -126,8 +127,10 @@ public class WeekView extends View {
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
             if (mCurrentScrollDirection == Direction.NONE) {
                 if (Math.abs(distanceX) > Math.abs(distanceY)){
-                    mCurrentScrollDirection = Direction.HORIZONTAL;
-                    mCurrentFlingDirection = Direction.HORIZONTAL;
+                    if(mAllowHorizontalScroll){
+                        mCurrentScrollDirection = Direction.HORIZONTAL;
+                        mCurrentFlingDirection = Direction.HORIZONTAL;
+                    }
                 }
                 else {
                     mCurrentFlingDirection = Direction.VERTICAL;
@@ -1376,6 +1379,13 @@ public class WeekView extends View {
     public void goToToday() {
         Calendar today = Calendar.getInstance();
         goToDate(today);
+    }
+
+    /**
+    *
+    */
+    public void setAllowHorizontalScroll(boolean allow){
+        this.mAllowHorizontalScroll = allow;
     }
 
     /**

@@ -50,6 +50,9 @@ public class MainActivity extends ActionBarActivity implements WeekView.MonthCha
         // Set long press listener for events.
         mWeekView.setEventLongPressListener(this);
 
+        //Set to block the horizotal scrolling if you wish
+        mWeekView.setAllowHorizontalScroll(false);
+
         // Set up a date time interpreter to interpret how the date and time will be formatted in
         // the week view. This is optional.
         setupDateTimeInterpreter(false);
