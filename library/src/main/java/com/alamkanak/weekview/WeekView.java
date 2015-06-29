@@ -1005,7 +1005,7 @@ public class WeekView extends View {
                     sdf = mDayNameLength == LENGTH_SHORT ? new SimpleDateFormat("EEEEE") : new SimpleDateFormat("EEE");
                     try{
                         String dayName = sdf.format(date.getTime()).toUpperCase();
-                        return String.format("%s %d/%02d", dayName, date.get(Calendar.MONTH) + 1, date.get(Calendar.DAY_OF_MONTH));
+                        return String.format("%s %d/%02d", dayName,  date.get(Calendar.DAY_OF_MONTH),date.get(Calendar.MONTH) + 1);
                     }catch (Exception e){
                         e.printStackTrace();
                         return "";
